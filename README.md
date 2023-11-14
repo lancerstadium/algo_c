@@ -14,7 +14,7 @@
 3. 0-1背包问题（0-1 bag problem）
 
 ## chapter 4：贪心算法
-1. 最优装载问题（best load problem）
+1. 最优负载问题（best load problem）
 2. 单源最短路径（single source shortest path）
 3. 最小生成树（minimum spanning tree）
 
@@ -29,9 +29,9 @@
 2. 最大团问题（maximum group problem）
 3. 0-1背包问题（0-1 bag problem）
 
-## chapter 7
-1. 计算定积分（）
-2. 随机投点计算π（）
+## chapter 7：数学计算
+1. 计算定积分（intergrate）
+2. 随机投点计算π（estimatePi）
 
 ## chapter 8
 1. 二阶段（）
