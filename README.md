@@ -10,23 +10,23 @@
 
 ## chapter 3：动态规划
 1. 矩阵连乘（muti matirx）
-2. 流水作业调度（pipline）
-3. 背包问题（bag problem）
+2. 批处理作业调度（batch scheduling）
+3. 0-1背包问题（0-1 bag problem）
 
-## chapter 4
-1. 最优转载问题（best load problem）
+## chapter 4：贪心算法
+1. 最优装载问题（best load problem）
 2. 单源最短路径（single source shortest path）
 3. 最小生成树（minimum spanning tree）
 
-## chapter 5
-1. 批处理作业调度（batch scheduling problem）
+## chapter 5：回溯算法
+1. 批处理作业调度（batch scheduling）
 2. 最大团问题（maximum group problem）
 3. 旅行售货员问题（traveling salesmen problem）
 
-## chapter 6
+## chapter 6：分支限界法
 > （全部用分支限界法）
-1. 单源最短路径（）
-2. 最大团问题（）
+1. 单源最短路径（single source shortest path）
+2. 最大团问题（maximum group problem）
 3. 0-1背包问题（0-1 bag problem）
 
 ## chapter 7

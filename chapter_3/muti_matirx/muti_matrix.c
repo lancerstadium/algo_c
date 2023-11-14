@@ -10,57 +10,72 @@
  *      但是，如果我们按照A*(B*C)的顺序相乘，
  *      那么乘法的次数为`30*5*60 + 10*30*60 = 9000 + 18000 = 27000`。
  *      可以看到，不同的相乘顺序导致了不同的乘法次数，从而影响到乘法的代价。
- * 算法思想：
+ * 算法思想：动态规划解决矩阵连乘问题的算法思想如下：
+ *      1. 定义状态：首先需要定义一个二维数组dp[i][j]，其中dp[i][j]表示从第i个矩阵到第j个矩阵相乘所需的最小乘法次数。
+ *          状态转移方程：对于任意的i <= k < j，假设我们选择第k个矩阵作为划分点，则有：
+ *              dp[i][j] = min(dp[i][k] + dp[k+1][j] + r[i-1]*r[k]*r[j])
+ *              其中r[i]表示第i个矩阵的行数，r[i-1]表示第i个矩阵的列数。
+ *      2. 初始化：对于单个矩阵而言，它与自身相乘的次数为0，因此dp[i][i] = 0。
+ *      3. 填表求解：根据状态转移方程，从状态数组的初始状态开始，依次填表求解dp[i][j]的值，直到填满整个状态数组。
+ *      4. 最优解：最终的最优解即为dp[1][n]，其中n表示矩阵的个数。
  * 时间复杂度：
  * 空间复杂度：
  * 操作系统：Windows 11
  * 编译器：GCC 11.2.0
  * C标准：C11
- * 编译指令：gcc --std=c11 
- * 运行指令：
+ * 编译指令：gcc --std=c11 muti_matrix.c -o muti_matrix
+ * 运行指令：.\muti_matrix.exe
 */
 
 #include <stdio.h>
-#include <limits.h>
 
-// 矩阵连乘问题的动态规划解决方案
-int matrixChainOrder(int p[], int n) {
-    // 1. 初始化数组：m[i][j]表示从第i个矩阵到第j个矩阵的最优乘法次数
-    int m[n][n];
-    int i, j, k, L, q;
+// 定义矩阵的数量
+#define N 6
 
-    // 2. 初始化第一行：m[i][i] = 0，表示从第i个矩阵到第i个矩阵的最优乘法次数为0
-    for (i = 1; i < n; i++) {
-        m[i][i] = 0;
+// 矩阵的行数和列数
+int r[N+1] = {10, 30, 5, 60, 10, 20, 25};
+
+// 定义动态规划数组
+int dp[N+1][N+1];
+
+// 返回a和b的最小值
+int min(int a, int b) {
+    return a < b ? a : b;
+}
+
+// 动态规划求解矩阵连乘问题
+int matrixChainOrder() {
+    // 1. 初始化边界条件
+    for (int i = 1; i <= N; i++) {
+        dp[i][i] = 0;
     }
 
-    // 3. 递推公式：m[i][j] = min(m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j])
-    for (L = 2; L < n; L++) {
-        for (i = 1; i < n - L + 1; i++) {
-            j = i + L - 1;     
-            m[i][j] = INT_MAX;              // 初始化为最大值
-            for (k = i; k <= j - 1; k++) {  // 寻找最优分割点
-                q = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j];     // 计算当前分割点
-                if (q < m[i][j]) {
-                    m[i][j] = q;
-                }
+    // 2. 填表求解
+    for (int l = 2; l <= N; l++) {
+        for (int i = 1; i <= N - l + 1; i++) {
+            int j = i + l - 1;
+            dp[i][j] = 99999999; // 初始值设为一个较大的数
+            for (int k = i; k <= j - 1; k++) {
+                int q = dp[i][k] + dp[k+1][j] + r[i-1]*r[k]*r[j];
+                dp[i][j] = min(dp[i][j], q);
             }
         }
     }
 
-    // 4. 返回最优乘法次数：m[1][n - 1]
-    return m[1][n - 1];
+    // 3. 返回最优解
+    return dp[1][N];
 }
 
 int main() {
-    // 如果有n个矩阵A1, A2, …, An，它们的维度分别是d0×d1, d1×d2, …, dn-1×dn
-    // 那么这些矩阵相乘的顺序可以影响到乘法的代价
-    int arr[] = {10, 30, 5, 60};
-    int size = sizeof(arr) / sizeof(arr[0]);
-
-    printf("最小乘法次数为: %d\n", matrixChainOrder(arr, size));
+    int result = matrixChainOrder();
+    // 打印矩阵维度信息
+    for (int i = 1; i <= N; i++) {
+        printf("%d ", r[i]);
+    }
+    printf("\nMinimum number of multiplications is: %d\n", result);
 
     return 0;
 }
+
 
 
