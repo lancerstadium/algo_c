@@ -9,9 +9,9 @@
 3. 最接近点对（close dot）
 
 ## chapter 3：动态规划
-1. 矩阵连乘（muti matirx）
-2. 批处理作业调度（batch scheduling）
-3. 0-1背包问题（0-1 bag problem）
+1. 矩阵连乘（[muti matirx](./chapter_3/muti_matirx/muti_matrix.c)
+2. 批处理作业调度（[batch scheduling](./chapter_3/pipline_scheduling/pipline_scheduling.c)
+3. 0-1背包问题（[0-1 bag problem](./chapter_3/bag_problem/bag_problem.c)）
 
 ## chapter 4：贪心算法
 1. 最优负载问题（best load problem）
