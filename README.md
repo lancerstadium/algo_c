@@ -20,7 +20,7 @@
 
 ## chapter 5：回溯算法
 1. 批处理作业调度（batch scheduling）
-2. 最大团问题（maximum group problem）
+2. 最大团问题（maximum clique problem）
 3. 旅行售货员问题（traveling salesmen problem）
 
 ## chapter 6：分支限界法
@@ -29,11 +29,11 @@
 2. 最大团问题（maximum group problem）
 3. 0-1背包问题（0-1 bag problem）
 
-## chapter 7：数学计算
+## chapter 7：数值计算
 1. 计算定积分（intergrate）
 2. 随机投点计算π（estimatePi）
 
 ## chapter 8
-1. 二阶段（）
-2. 最大网络流问题（）
-3. 增广路算法（）
+1. 二阶段问题（two stage）
+2. 网络最大流问题（max flow）
+3. 增广路算法（augmenting path）
